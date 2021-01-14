@@ -1,17 +1,17 @@
 import {
   GET_COUNTRY,
-} from '../constants/countries'
+} from '../constants/country'
 
 const initialState = {
-  countries: null
+  country: null
 }
 
-export const countries = (state = initialState, action) => {
+export const country = (state = initialState, action) => {
   switch (action.type) {
     case GET_COUNTRY:
       return {
         ...state,
-        countries: action.payload
+        country: action.payload
       }
     default:
       return state

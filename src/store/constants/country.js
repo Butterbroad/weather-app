@@ -1,1 +1,1 @@
-export const GET_COUNTRY = 'GET_COUNTRIES_BY_LONGNAME';
+export const GET_COUNTRY = 'GET_COUNTRY';

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux'
 import {
   CountryStyled,
   CountryWrapperStyled,
@@ -6,30 +7,31 @@ import {
   CountryTextLineStyled
 } from './index.styled';
 
-function Country({ country }) {
+function Country() {
+  const countryWeather = useSelector(store => store.country.country)
   return (
     <CountryStyled>
       <CountryWrapperStyled>
         <CountryNameStyled>
-          City name:
+          City name: {countryWeather?.name}
         </CountryNameStyled>
         <CountryNameStyled>
-          Country:
+          Country: {countryWeather?.sys.country}
         </CountryNameStyled>
         <CountryTextLineStyled>
-          Weather:
+          Weather: {countryWeather?.weather[0].main}
         </CountryTextLineStyled>
         <CountryTextLineStyled>
-          Temperature:
+          Temperature: {countryWeather?.main.temp}
         </CountryTextLineStyled>
         <CountryTextLineStyled>
-          Feels like:
+          Feels like: {countryWeather?.main.feels_like}
         </CountryTextLineStyled>
         <CountryTextLineStyled>
-          Pressure:
+          Pressure: {countryWeather?.main.pressure}
         </CountryTextLineStyled>
         <CountryTextLineStyled>
-          Wind speed:
+          Wind speed: {countryWeather?.wind.speed}
         </CountryTextLineStyled>
       </CountryWrapperStyled>
     </CountryStyled>
