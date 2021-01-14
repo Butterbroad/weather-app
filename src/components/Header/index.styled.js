@@ -15,24 +15,10 @@ align-items: center;
 height: 80px;
 `;
 
-export const HeaderInputStyled = styled.input`
-max-width: 80%;
-width: 100%;
-height: 40px;
-outline: none;
-border: none;
-font-size: 18px;
-border-radius: 6px;
-padding: 0 15px;
-
-@media (max-width: 767px) {
-  font-size: 14px;
-}
-`;
-
 export const HeaderButtonStyled = styled.button`
 height: 40px;
 padding: 0 15px;
+min-width: 200px;
 background-color: #fff;
 color: #000;
 cursor: pointer;
@@ -44,5 +30,8 @@ font-size: 18px;
 
 @media (max-width: 1023px) {
   margin-left: 10px;
+}
+@media (max-width: 639px) {
+  min-width: auto;
 }
 `;

@@ -1,4 +1,8 @@
 import { GET_COUNTRY } from '../constants/country';
+import {
+  showLoader,
+  hideLoader
+} from '../actions/loader';
 import axios from 'axios';
 
 const getCountry = (country) => ({
@@ -6,16 +10,16 @@ const getCountry = (country) => ({
   payload: country
 });
 
-export const getCountryAsync = (name) => {
+export const getCountryAsync = (payload) => {
   return async dispatch => {
     try {
-      // dispatch(showLoader())
-      const { data } = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${name}&units=metric&appid=d9e0ed92bc042252ca932a5d5e95ecd2`);
+      dispatch(showLoader())
+      const { data } = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${payload.value}&units=metric&lang=${payload.locale}&appid=d9e0ed92bc042252ca932a5d5e95ecd2`);
       dispatch(getCountry(data))
-      // dispatch(hideLoader())
+      dispatch(hideLoader())
     } catch (err) {
       alert(err.message)
-      // dispatch(hideLoader())
+      dispatch(showLoader())
     }
   }
 }

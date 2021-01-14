@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import {
   HeaderStyled,
   HeaderWrapperStyled,
-  HeaderInputStyled,
   HeaderButtonStyled
 } from './index.styled';
 import Lang from './Lang';
@@ -10,37 +9,31 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   getCountryAsync,
 } from '../../store/actions/country';
+import HeaderInput from './HeaderInput';
+import { useTranslate } from 'react-redux-multilingual';
 
 function Header() {
   const [value, setValue] = useState('');
   const dispatch = useDispatch();
-
+  const { locale } = useSelector(store => store.dropdown.currentItem);
   const clickHandler = () => {
-    dispatch(getCountryAsync(value));
+    dispatch(getCountryAsync({ value, locale }));
     setValue("");
   }
-
+  const translate = useTranslate();
 
   return (
     <HeaderStyled>
       <HeaderWrapperStyled>
 
-        <HeaderInputStyled
-          type="text"
-          onChange={e => setValue(e.target.value)}
-          onKeyPress={e => {
-            if (e.key === "Enter" && value) {
-              clickHandler()
-            }
-          }}
-        />
+        <HeaderInput value={value} setValue={setValue} onInputSubmit={clickHandler} />
 
         <HeaderButtonStyled
           onClick={() => {
             clickHandler()
           }}
         >
-          Получить
+          {translate('button')}
         </HeaderButtonStyled>
 
         <Lang />

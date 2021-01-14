@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const LoaderStyled = styled.div`
-position: relative;
-height: 80%;
+position: fixed;
+height: 100%;
+width: 100%;
 display: flex;
 align-items: center;
 justify-content: center;
@@ -78,5 +79,14 @@ div:nth-child(11) {
 div:nth-child(12) {
   transform: rotate(330deg);
   animation-delay: 0s;
+}
+
+@keyframes lds-spinner {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 `;

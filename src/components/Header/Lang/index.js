@@ -5,31 +5,43 @@ import {
   LangDropdownItemStyled,
   LangCurrentStyled
 } from './index.styled'
-// import LangItem from './LangItem/LangItem';
-// import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setCurrentItem } from '../../../store/actions/dropdownLang';
+import { IntlActions } from 'react-redux-multilingual';
+import { getCountryAsync } from '../../../store/actions/country';
+
 
 function Lang() {
-  // const currentLang = useSelector(store => store.lang.currentLang);
-  // const items = [
-  //   {
-  //     name: 'ENG',
-  //     locale: "en"
-  //   },
-  //   {
-  //     name: 'RU',
-  //     locale: 'ru',
-  //   }
-  // ]
+  const dispatch = useDispatch();
+  const currentLang = useSelector(store => store.dropdown.currentItem);
+  const currentWeather = useSelector(store => store.country.country);
+  const items = [
+    {
+      name: 'ENG',
+      locale: "en"
+    },
+    {
+      name: 'RU',
+      locale: 'ru',
+    }
+  ]
   return (
     <LangStyled>
-      <LangCurrentStyled>RU</LangCurrentStyled>
+      <LangCurrentStyled>
+        {currentLang?.name}
+      </LangCurrentStyled>
       <LangDropdownStyled>
-        <LangDropdownItemStyled>
-          RU
-        </LangDropdownItemStyled>
-        <LangDropdownItemStyled>
-          EN
-        </LangDropdownItemStyled>
+        {items.map(item => (
+          <LangDropdownItemStyled
+            onClick={() => {
+              dispatch(setCurrentItem(item));
+              dispatch(IntlActions.setLocale(item.locale));
+              currentWeather && dispatch(getCountryAsync({ value: currentWeather?.name, locale: item.locale }));
+            }}
+          >
+            {item.name}
+          </LangDropdownItemStyled>
+        ))}
       </LangDropdownStyled>
     </LangStyled>
   )
