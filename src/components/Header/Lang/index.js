@@ -18,11 +18,13 @@ function Lang() {
   const items = [
     {
       name: 'ENG',
-      locale: "en"
+      locale: "en",
+      id: '1'
     },
     {
       name: 'RU',
       locale: 'ru',
+      id: '2'
     }
   ]
   return (
@@ -33,6 +35,7 @@ function Lang() {
       <LangDropdownStyled>
         {items.map(item => (
           <LangDropdownItemStyled
+            key={item.id}
             onClick={() => {
               dispatch(setCurrentItem(item));
               dispatch(IntlActions.setLocale(item.locale));

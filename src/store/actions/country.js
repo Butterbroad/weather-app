@@ -10,12 +10,20 @@ const getCountry = (country) => ({
   payload: country
 });
 
+const cities = JSON.parse(localStorage.getItem('cities')) || [];
+
 export const getCountryAsync = (payload) => {
   return async dispatch => {
     try {
       dispatch(showLoader())
       const { data } = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${payload.value}&units=metric&lang=${payload.locale}&appid=d9e0ed92bc042252ca932a5d5e95ecd2`);
-      dispatch(getCountry(data))
+      dispatch(getCountry(data));
+
+      if (!cities.length || !cities.find(city => city === data.name)) {
+        cities.push(data.name);
+        localStorage.setItem('cities', JSON.stringify(cities));
+      }
+
       dispatch(hideLoader())
     } catch (err) {
       alert(err.message)

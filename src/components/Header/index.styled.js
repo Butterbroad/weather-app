@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const HeaderStyled = styled.section`
+export const HeaderStyled = styled.header`
 background-color: #34495e;
 `;
 
