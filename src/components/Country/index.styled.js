@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const CountryStyled = styled.div`
 max-width: 660px;
-margin: 30px auto;
+margin: 10% auto;
 padding: 15px;
 min-height: 450px;
 border-radius: 30px;

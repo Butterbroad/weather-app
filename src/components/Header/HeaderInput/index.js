@@ -8,6 +8,8 @@ import {
 
 function HeaderInput({ value, setValue, onInputSubmit }) {
   const cities = JSON.parse(localStorage.getItem('cities')) || [];
+  const [showDropdown, setShowDropdown] = useState(false);
+
 
   return (
     <HeaderInputStyled>
@@ -20,18 +22,26 @@ function HeaderInput({ value, setValue, onInputSubmit }) {
           }
         }}
         value={value}
+        onFocus={() => setShowDropdown(true)}
+        onBlur={() => setShowDropdown(false)}
       />
 
-      <HeaderInputDropdownStyled>
-        {cities.map(city => (
-          <HeaderInputDropdownItemStyled
-            key={city}
-            onClick={() => setValue(city)}
-          >
-            {city}
-          </HeaderInputDropdownItemStyled>
-        ))}
-      </HeaderInputDropdownStyled>
+      {
+        showDropdown ? <HeaderInputDropdownStyled>
+          {cities.map(city => (
+            <HeaderInputDropdownItemStyled
+              key={city}
+              onClick={() => setValue(city)}
+            >
+              {city}
+            </HeaderInputDropdownItemStyled>
+          ))}
+        </HeaderInputDropdownStyled>
+          :
+          null
+      }
+
+
     </HeaderInputStyled>
 
 

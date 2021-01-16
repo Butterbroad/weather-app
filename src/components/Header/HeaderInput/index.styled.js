@@ -30,6 +30,8 @@ z-index: 2;
 border-bottom-left-radius: 12px;
 border-bottom-right-radius: 12px;
 overflow: hidden;
+height: 140px;
+overflow-y: auto;
 `;
 
 export const HeaderInputDropdownItemStyled = styled.li`
@@ -42,7 +44,7 @@ font-weight: 500;
 display: flex;
 align-items: center;
 cursor: pointer;
-background-color: rgba(255,255,255,.7);
+background-color: rgba(255,255,255,.9);
 transition: all .3s ease;
 
 &:last-child {
