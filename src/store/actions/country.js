@@ -16,7 +16,7 @@ export const getCountryAsync = (payload) => {
   return async dispatch => {
     try {
       dispatch(showLoader())
-      const { data } = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${payload.value}&units=metric&lang=${payload.locale}&appid=d9e0ed92bc042252ca932a5d5e95ecd2`);
+      const { data } = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${payload.value}&units=metric&lang=${payload.locale}&appid=d9e0ed92bc042252ca932a5d5e95ecd2`);
       dispatch(getCountry(data));
 
       if (!cities.length || !cities.find(city => city === payload.value)) {
