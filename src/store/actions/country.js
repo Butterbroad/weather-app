@@ -3,6 +3,7 @@ import {
   showLoader,
   hideLoader
 } from '../actions/loader';
+import { showError, hideError } from '../actions/error';
 import axios from 'axios';
 
 const getCountry = (country) => ({
@@ -25,9 +26,10 @@ export const getCountryAsync = (payload) => {
       }
 
       dispatch(hideLoader())
+      dispatch(hideError())
     } catch (err) {
-      alert(err.message)
-      dispatch(showLoader())
+      dispatch(showError())
+      dispatch(hideLoader())
     }
   }
 }

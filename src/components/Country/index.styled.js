@@ -2,10 +2,8 @@ import styled from 'styled-components';
 
 export const CountryStyled = styled.div`
 max-width: 660px;
-margin: 10% auto;
-padding: 15px;
+width: 100%;
 min-height: 450px;
-border-radius: 30px;
 
 @media (max-width: 1439px) {
     min-height: 350px;

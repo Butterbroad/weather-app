@@ -10,6 +10,7 @@ export default {
       feelsLike: 'Ощущается как:',
       pressure: 'Давление:',
       windSpeed: 'Скорость ветра:',
+      placeholder: 'Введите название города'
     }
   },
   en: {
@@ -23,6 +24,7 @@ export default {
       feelsLike: 'Feels like:',
       pressure: 'Pressure:',
       windSpeed: 'Wind speed:',
+      placeholder: 'Type city name'
     }
   }
 }

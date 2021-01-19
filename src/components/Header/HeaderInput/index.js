@@ -5,11 +5,13 @@ import {
   HeaderInputDropdownStyled,
   HeaderInputDropdownItemStyled
 } from './index.styled';
+import { useTranslate } from 'react-redux-multilingual';
 
 function HeaderInput({ value, setValue, onInputSubmit }) {
   const cities = JSON.parse(localStorage.getItem('cities')) || [];
   const [showDropdown, setShowDropdown] = useState(false);
-  const [result, setResult] = useState([])
+  const [result, setResult] = useState([]);
+  const translate = useTranslate();
 
   useEffect(() => {
     setResult(cities)
@@ -36,6 +38,7 @@ function HeaderInput({ value, setValue, onInputSubmit }) {
             setResult(cities.filter(elem => elem.toLowerCase().includes(value.toLowerCase())))
         }}
         onBlur={() => setTimeout(() => setShowDropdown(false), 100)}
+        placeholder={translate('placeholder')}
       />
 
       {
