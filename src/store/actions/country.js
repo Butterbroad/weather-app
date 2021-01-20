@@ -33,11 +33,3 @@ export const getCountryAsync = (payload) => {
     }
   }
 }
-
-const modalButtons = document.querySelectorAll('.modal-buttons');
-
-modalButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    button.style.display = 'none';
-  })
-});
