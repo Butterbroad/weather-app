@@ -46,7 +46,7 @@ function HeaderInput({ value, setValue, onInputSubmit }) {
           {result.map(city => (
             <HeaderInputDropdownItemStyled
               key={city}
-              onClick={() => setValue(city)}
+              onClick={() => setValue(city[0].toUpperCase() + city.slice(1))}
             >
               {city[0].toUpperCase() + city.slice(1)}
             </HeaderInputDropdownItemStyled>
