@@ -20,8 +20,8 @@ export const getCountryAsync = (payload) => {
       const { data } = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${payload.value}&units=metric&lang=${payload.locale}&appid=d9e0ed92bc042252ca932a5d5e95ecd2`);
       dispatch(getCountry(data));
 
-      if (!cities.length || !cities.find(city => city === payload.value)) {
-        cities.push(payload.value);
+      if (!cities.length || !cities.find(city => city.toLowerCase() === payload.value.toLowerCase())) {
+        cities.push(payload.value.toLowerCase());
         localStorage.setItem('cities', JSON.stringify(cities));
       }
 
@@ -33,3 +33,11 @@ export const getCountryAsync = (payload) => {
     }
   }
 }
+
+const modalButtons = document.querySelectorAll('.modal-buttons');
+
+modalButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    button.style.display = 'none';
+  })
+});
